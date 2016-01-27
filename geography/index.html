@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<title>Geography</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/sidebar/sidebar.css">
+	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="assets/sidebar/jquery.sidebar.min.js"></script>
+</head>
+<body>	
+	<div id="map"></div>
+	<div class="sidebars">
+		<div id="mapinfo" class="sidebar bottom"></div>
+	</div>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&signed_in=true&callback=initMap"></script>
+	<script src="assets/geocoder.js"></script>
+	
+	<script>
+	$(document).ready(function () {
+		$(".sidebar.bottom").sidebar({side: "bottom"});
+	});
+	</script>
+</body>
+</html>
