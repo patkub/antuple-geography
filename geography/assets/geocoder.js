@@ -32,7 +32,7 @@ function sidebar() {
  * Create state polygons
  */
 function makeStates() {
-	count = 0;
+	var count = 0;
 	for (stateCodes in stateBorders) {
 		statePolygon[count] = createPolyRegion(stateCodes);
 		statePolygon[count].setMap(map);
@@ -44,7 +44,7 @@ function makeStates() {
  * Make map regions.
  */
 function markRegions() {
-	count = 0;
+	var count = 0;
 	
 	for (stateCodes in stateBorders) {		
 		if (stateCodes == 'Washington' || stateCodes == "Montana" || stateCodes == "Oregon" || stateCodes == "Idaho" || stateCodes == "Wyoming" || stateCodes == "California" || stateCodes == "Nevada" || stateCodes == "Utah" || stateCodes == "Colorado" || stateCodes == "Alaska" || stateCodes == "Hawaii")
@@ -55,7 +55,8 @@ function markRegions() {
 				strokeWeight: 2,
 				fillColor: '#d7c8ff',
 				fillOpacity: 0.50,
-				geodesic: true
+				geodesic: true,
+				visible: true
 			});
 		}
 		else if (stateCodes == 'North Dakota' || stateCodes == 'South Dakota' || stateCodes == 'Nebraska' || stateCodes == 'Kansas' || stateCodes == 'Minnesota' || stateCodes == 'Iowa' || stateCodes == 'Missouri' || stateCodes == 'Wisconsin' || stateCodes == 'Illinois' || stateCodes == 'Michigan' || stateCodes == 'Indiana' || stateCodes == 'Ohio')
@@ -66,7 +67,8 @@ function markRegions() {
 				strokeWeight: 2,
 				fillColor: '#bef0fa',
 				fillOpacity: 0.50,
-				geodesic: true
+				geodesic: true,
+				visible: true
 			});
 		}
 		else if (stateCodes == 'Arizona' || stateCodes == 'New Mexico' || stateCodes == 'Oklahoma' || stateCodes == 'Texas')
@@ -77,7 +79,8 @@ function markRegions() {
 				strokeWeight: 2,
 				fillColor: '#ffff99',
 				fillOpacity: 0.50,
-				geodesic: true
+				geodesic: true,
+				visible: true
 			});
 		}
 		else if (stateCodes == 'Arkansas' || stateCodes == 'Louisiana' || stateCodes == 'Mississippi' || stateCodes == 'Alabama' || stateCodes == 'Tennessee' || stateCodes == 'Kentucky' || stateCodes == 'Florida' || stateCodes == 'Georgia' || stateCodes == 'North Carolina' || stateCodes == 'South Carolina' || stateCodes == 'Virginia' || stateCodes == 'West Virginia')
@@ -88,7 +91,8 @@ function markRegions() {
 				strokeWeight: 2,
 				fillColor: '#9bff9b',
 				fillOpacity: 0.50,
-				geodesic: true
+				geodesic: true,
+				visible: true
 			});
 		}
 		else if (stateCodes == 'Main' || stateCodes == 'Vermont' || stateCodes == 'New Hampshire' || stateCodes == 'Massachusetts' || stateCodes == 'Connecticut' || stateCodes == 'Rhode Island' || stateCodes == 'New York' || stateCodes == 'New Jersey' || stateCodes == 'Delaware' || stateCodes == 'Maryland' || stateCodes == 'Pennsylvania' || stateCodes == 'Maine')
@@ -99,7 +103,8 @@ function markRegions() {
 				strokeWeight: 2,
 				fillColor: '#ff96c8',
 				fillOpacity: 0.50,
-				geodesic: true
+				geodesic: true,
+				visible: true
 			});
 		}
 		
@@ -117,6 +122,19 @@ function markRegions() {
 			});
 		});
 		
+		count++;
+	}
+}
+
+/**
+ * Clear state polygons.
+ */
+function clearPolygons() {
+	var count = 0;
+	for (stateCodes in stateBorders) {
+		statePolygon[count].setOptions({
+			visible: false
+		});
 		count++;
 	}
 }
@@ -242,6 +260,14 @@ jQuery(function ($) {
 		
 		$(".sidebar.bottom").trigger("sidebar:close");
     });
+	
+	/**
+	 * Clear polygons
+	 */
+    $(document).on('change', 'input:radio[id^="radio_clear"]', function (event) {
+		clearPolygons();
+		$(".sidebar.bottom").trigger("sidebar:close");
+    });
 });
 
 /**
@@ -261,6 +287,9 @@ function populateMap() {
         '<input id="radio_regions" name="op" type="radio" value="0" />Regions</label><br>'+
     '<label class="btn btn-default" id="radio_red_blue">'+
         '<input id="radio_red_blue" name="op" type="radio" value="1" />Red / Blue States</label><br>'+
+	'</div>'+
+	'<label class="btn btn-default" id="radio_clear">'+
+        '<input id="radio_clear" name="op" type="radio" value="1" />Clear</label><br>'+
 	'</div>'+
 	
 	'</div>'+
