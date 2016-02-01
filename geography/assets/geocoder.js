@@ -243,7 +243,8 @@ jQuery(function ($) {
 				// blue state
 				statePolygon[i].setOptions({
 					strokeColor: '#2f2f2f',
-					fillColor: '#0000ff'
+					fillColor: '#0000ff',
+					visible: true
 				});
 			}
 			else
@@ -251,7 +252,8 @@ jQuery(function ($) {
 				// red state
 				statePolygon[i].setOptions({
 					strokeColor: '#2f2f2f',
-					fillColor: '#ff0000'
+					fillColor: '#ff0000',
+					visible: true
 				});
 			}
 			
