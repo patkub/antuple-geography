@@ -371,7 +371,7 @@ function populateMap() {
 	'<p>'+
 	
 	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=41.764495,-72.673782&heading=-66.73&pitch=20.19&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
-	'The Ancient Burying Ground is a historic cementary on 60 Gold Street, Hartford, CT. The First Church of Christ, located next to the cementary, is the oldest church in Hartford'+
+	'The Ancient Burying Ground is a historic cementary on 60 Gold Street, Hartford, CT. The First Church of Christ, located next to the cementary, is the oldest church in Hartford.'+
 	'</p>'+
 	'</div>'+
 	'</div>';
