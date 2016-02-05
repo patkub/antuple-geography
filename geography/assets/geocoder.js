@@ -22,7 +22,12 @@ function initMap() {
 		options: {
 			styleId: 2,
 			templateId: 2
-		}
+		},
+		styles: [{
+            markerOptions: {
+                optimized: false
+            }
+		}]
 	});
 	
 	geocoder = new google.maps.Geocoder();
@@ -194,12 +199,12 @@ function centerMap(country) {
 }
 
 /**
- * Add a country to the map.
- * @param country - country to add to the map.
- * @param info - pop-up content.
+ * Add a marker with sidebar content to the map.
+ * @param addr - address to add to the map.
+ * @param info - optional sidebar info.
  */
-function addCountry(country, info) {		
-	geocoder.geocode( { 'address': country }, function(results, status) {
+function geocodeAddress(addr, info) {		
+	geocoder.geocode( { 'address': addr }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			map.setCenter(results[0].geometry.location);
 			
@@ -211,10 +216,6 @@ function addCountry(country, info) {
 			});
 			
 			if (info) {
-				//var infoCountry = new google.maps.InfoWindow({
-				//	content: info
-				//});
-				
 				markerCountry.addListener('click', function() {
 					//infoCountry.open(map, markerCountry);
 					document.getElementById("mapinfo").innerHTML=info;
@@ -362,9 +363,25 @@ function populateMap() {
 	'</div>'+
 	'</div>';
 	
-	addCountry('USA', usaString);
-	addCountry('Brazil', brazilString);
-	addCountry('Denmark', denmarkString);
+	var ancientBuryingGroundString = '<div id="content">'+
+	'<div id="siteNotice">'+
+	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
+	'<h1 id="firstHeading" class="firstHeading">Ancient Burying Ground</h1>'+
+	'<div id="bodyContent">'+
+	'<p>'+
+	
+	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=41.764495,-72.673782&heading=-66.73&pitch=20.19&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
+	'The Ancient Burying Ground is a historic cementary on 60 Gold Street, Hartford, CT. The First Church of Christ, located next to the cementary, is the oldest church in Hartford'+
+	'</p>'+
+	'</div>'+
+	'</div>';
+	
+	geocodeAddress('USA', usaString);
+	
+	geocodeAddress('60 Gold St, Hartford, CT 06103', ancientBuryingGroundString);
+	
+	geocodeAddress('Brazil', brazilString);
+	geocodeAddress('Denmark', denmarkString);
 	centerMap('USA');
 }
 
