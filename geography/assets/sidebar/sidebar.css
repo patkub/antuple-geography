@@ -35,7 +35,7 @@ p {
 
 @media (max-width: 768px) {
 	.sidebar.bottom {
-		max-height:100vh;
-		height: 100vh;
+		max-height: 80vh;
+		height: 80vh;
 	}
 }
