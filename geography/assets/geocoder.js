@@ -348,7 +348,7 @@ function populateMap() {
 	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 	'<h1 id="firstHeading" class="firstHeading">Brazil</h1>'+
 	'<div id="bodyContent">'+
-	'<p><b>ok</b>'+
+	'<p align="left"><b>ok</b>'+
 	'test</p>'+
 	'</div>'+
 	'</div>';
@@ -358,8 +358,22 @@ function populateMap() {
 	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 	'<h1 id="firstHeading" class="firstHeading">Denmark</h1>'+
 	'<div id="bodyContent">'+
-	'<p><b>hello</b>'+
+	'<p align="left"><b>hello</b>'+
 	'test</p>'+
+	'</div>'+
+	'</div>';
+	
+	var edmundPettusBridgeString = '<div id="content">'+
+	'<div id="siteNotice">'+
+	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
+	'<h1 id="firstHeading" class="firstHeading">Edmund Pettus Bridge</h1>'+
+	'<div id="bodyContent">'+
+	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=32.4054951,-87.0185059&heading=247.58&pitch=15&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
+	'<p align="left">'+
+	'Edmund Winston Pettus (July 6, 1821 - July 27, 1907) was a Confederate general in the American Civil War. After the war, he led the Alamaba Ku Klux Klan as Grand Dragon.'+
+	'The bridge was the site of the Selma to Montgomery marches and "Bloody Sunday", where peaceful African-American protesters were attacked by armed police officers with Billy clubs and tear gas.'+
+	'The Edmund Pettus bridge was named in his honor and ironically became a landmark in the March on Selma.'+
+	'</p>'+
 	'</div>'+
 	'</div>';
 	
@@ -368,16 +382,16 @@ function populateMap() {
 	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 	'<h1 id="firstHeading" class="firstHeading">Ancient Burying Ground</h1>'+
 	'<div id="bodyContent">'+
-	'<p>'+
-	
-	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=41.764495,-72.673782&heading=-66.73&pitch=20.19&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
-	'The Ancient Burying Ground is a historic cementary on 60 Gold Street, Hartford, CT. The First Church of Christ, located next to the cementary, is the oldest church in Hartford.'+
+	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=41.764495,-72.673782&heading=-80&pitch=15&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
+	'<p align="left">The Ancient Burying Ground is a historic cementary on 60 Gold Street, Hartford, CT. The First Church of Christ, located next to the cementary, is the oldest church in Hartford.'+
 	'</p>'+
 	'</div>'+
 	'</div>';
 	
 	geocodeAddress('USA', usaString);
 	
+	// geocode landmarks per state
+	geocodeAddress('Selma, AL 36703', edmundPettusBridgeString);
 	geocodeAddress('60 Gold St, Hartford, CT 06103', ancientBuryingGroundString);
 	
 	geocodeAddress('Brazil', brazilString);
