@@ -203,7 +203,7 @@ function centerMap(country) {
  * @param addr - address to add to the map.
  * @param info - optional sidebar info.
  */
-function geocodeAddress(addr, info) {		
+function geocodeAddress(addr, info, icon) {		
 	geocoder.geocode( { 'address': addr }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			map.setCenter(results[0].geometry.location);
@@ -221,6 +221,10 @@ function geocodeAddress(addr, info) {
 					document.getElementById("mapinfo").innerHTML=info;
 					$(".sidebar.bottom").trigger("sidebar:open");
 				});
+			}
+			
+			if (icon) {
+				markerCountry.setIcon(icon);
 			}
 		} else {
 		  alert("Geocode was not successful for the following reason: " + status);
@@ -388,14 +392,27 @@ function populateMap() {
 	'</div>'+
 	'</div>';
 	
-	geocodeAddress('USA', usaString);
+	var grandCanyonString = '<div id="content">'+
+	'<div id="siteNotice">'+
+	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
+	'<h1 id="firstHeading" class="firstHeading">Grand Canyon</h1>'+
+	'<div id="bodyContent">'+
+	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=36.0697473,-112.1628547&heading=0&pitch=0&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
+	'<p align="left">The Grand Canyon is formed by geologic color and erosion. The canyon is vast and spreads past 1 million acres of land.'+
+	'</p>'+
+	'</div>'+
+	'</div>';
+	
+	// geocode countries
+	geocodeAddress('USA', usaString, 'http://maps.google.com/mapfiles/arrow.png');
+	geocodeAddress('Brazil', brazilString);
+	geocodeAddress('Denmark', denmarkString);
 	
 	// geocode landmarks per state
 	geocodeAddress('Selma, AL 36703', edmundPettusBridgeString);
 	geocodeAddress('60 Gold St, Hartford, CT 06103', ancientBuryingGroundString);
+	geocodeAddress('Arizona 86052', grandCanyonString);
 	
-	geocodeAddress('Brazil', brazilString);
-	geocodeAddress('Denmark', denmarkString);
 	centerMap('USA');
 }
 
