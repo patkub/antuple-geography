@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="assets/sidebar/sidebar.css">
 	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="assets/sidebar/jquery.sidebar.min.js"></script>
-	
 	<style>
 	@media (max-width: 768px) {
 		.imgStreet {
@@ -16,7 +15,6 @@
 		}
 	}
 	</style>
-	
 </head>
 <body>	
 	<div id="map"></div>
@@ -24,7 +22,8 @@
 		<div id="mapinfo" class="sidebar bottom" style="overflow-y:auto;"></div>
 	</div>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&signed_in=true&callback=initMap"></script>
-	<script src="assets/geocoder.js"></script>
+	<script src="assets/geocoder.min.js"></script>
+	<script src="assets/content.min.js"></script>
 	<script>
 	$(document).ready(function () {
 		$(".sidebar.bottom").sidebar({side: "bottom"});

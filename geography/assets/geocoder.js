@@ -202,6 +202,7 @@ function centerMap(country) {
  * Add a marker with sidebar content to the map.
  * @param addr - address to add to the map.
  * @param info - optional sidebar info.
+ * @param icon - optional custom icon.
  */
 function geocodeAddress(addr, info, icon) {		
 	geocoder.geocode( { 'address': addr }, function(results, status) {
@@ -217,7 +218,6 @@ function geocodeAddress(addr, info, icon) {
 			
 			if (info) {
 				markerCountry.addListener('click', function() {
-					//infoCountry.open(map, markerCountry);
 					document.getElementById("mapinfo").innerHTML=info;
 					$(".sidebar.bottom").trigger("sidebar:open");
 				});
@@ -323,86 +323,6 @@ jQuery(function ($) {
  * Populate the map.
  */
 function populateMap() {
-	var usaString = '<div id="content">'+
-	'<div id="siteNotice">'+
-	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
-	'<h1 id="firstHeading" class="firstHeading">USA</h1>'+
-	'<div id="bodyContent">'+
-	'<h2>Regions</h2>'+
-	'<p>Northeast - Red<br>Southeast - Green<br>Midwest - Blue<br>Southwest - Yellow<br>West - Purple</p>'+
-	
-	'<div id="q_opt" class="btn-group" data-toggle="buttons">'+
-    '<label class="btn btn-default active" id="radio_regions">'+
-        '<input id="radio_regions" name="op" type="radio" value="0" />Regions</label><br>'+
-    '<label class="btn btn-default" id="radio_red_blue">'+
-        '<input id="radio_red_blue" name="op" type="radio" value="1" />Red / Blue States</label><br>'+
-	'</div>'+
-	'<label class="btn btn-default" id="radio_population">'+
-        '<input id="radio_population" name="op" type="radio" value="2" />Show Population</label><br>'+
-	'</div>'+
-	'<label class="btn btn-default" id="radio_clear">'+
-        '<input id="radio_clear" name="op" type="radio" value="3" />Clear</label><br>'+
-	'</div>'+
-	
-	'</div>'+
-	'</div>';
-	
-	var brazilString = '<div id="content">'+
-	'<div id="siteNotice">'+
-	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
-	'<h1 id="firstHeading" class="firstHeading">Brazil</h1>'+
-	'<div id="bodyContent">'+
-	'<p align="left"><b>ok</b>'+
-	'test</p>'+
-	'</div>'+
-	'</div>';
-	
-	var denmarkString = '<div id="content">'+
-	'<div id="siteNotice">'+
-	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
-	'<h1 id="firstHeading" class="firstHeading">Denmark</h1>'+
-	'<div id="bodyContent">'+
-	'<p align="left"><b>hello</b>'+
-	'test</p>'+
-	'</div>'+
-	'</div>';
-	
-	var edmundPettusBridgeString = '<div id="content">'+
-	'<div id="siteNotice">'+
-	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
-	'<h1 id="firstHeading" class="firstHeading">Edmund Pettus Bridge</h1>'+
-	'<div id="bodyContent">'+
-	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=32.4054951,-87.0185059&heading=247.58&pitch=15&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
-	'<p align="left">'+
-	'Edmund Winston Pettus (July 6, 1821 - July 27, 1907) was a Confederate general in the American Civil War. After the war, he led the Alamaba Ku Klux Klan as Grand Dragon.'+
-	'The bridge was the site of the Selma to Montgomery marches and "Bloody Sunday", where peaceful African-American protesters were attacked by armed police officers with Billy clubs and tear gas.'+
-	'The Edmund Pettus bridge was named in his honor and ironically became a landmark in the March on Selma.'+
-	'</p>'+
-	'</div>'+
-	'</div>';
-	
-	var ancientBuryingGroundString = '<div id="content">'+
-	'<div id="siteNotice">'+
-	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
-	'<h1 id="firstHeading" class="firstHeading">Ancient Burying Ground</h1>'+
-	'<div id="bodyContent">'+
-	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=41.764495,-72.673782&heading=-80&pitch=15&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
-	'<p align="left">The Ancient Burying Ground is a historic cementary on 60 Gold Street, Hartford, CT. The First Church of Christ, located next to the cementary, is the oldest church in Hartford.'+
-	'</p>'+
-	'</div>'+
-	'</div>';
-	
-	var grandCanyonString = '<div id="content">'+
-	'<div id="siteNotice">'+
-	'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
-	'<h1 id="firstHeading" class="firstHeading">Grand Canyon</h1>'+
-	'<div id="bodyContent">'+
-	'<img class="imgStreet" src="https://maps.googleapis.com/maps/api/streetview?size=1000x500&location=36.0697473,-112.1628547&heading=0&pitch=0&key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0"><br><br>'+
-	'<p align="left">The Grand Canyon is formed by geologic color and erosion. The canyon is vast and spreads past 1 million acres of land.'+
-	'</p>'+
-	'</div>'+
-	'</div>';
-	
 	// geocode countries
 	geocodeAddress('USA', usaString, 'http://maps.google.com/mapfiles/arrow.png');
 	geocodeAddress('Brazil', brazilString);
@@ -412,7 +332,10 @@ function populateMap() {
 	geocodeAddress('Selma, AL 36703', edmundPettusBridgeString);
 	geocodeAddress('60 Gold St, Hartford, CT 06103', ancientBuryingGroundString);
 	geocodeAddress('Arizona 86052', grandCanyonString);
+	geocodeAddress('600 Museum Way, Bentonville, AR 72712', crystalBridgesString);
+	geocodeAddress('750 Hearst Castle Rd, San Simeon, CA 93452', hearstCastleString);
 	
+	// position the map
 	centerMap('USA');
 }
 
