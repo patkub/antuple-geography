@@ -236,7 +236,6 @@ function geocodeAddress(addr, info, icon, bounce) {
 		  alert("Geocode was not successful for the following reason: " + status);
 		}
 	});
-	return markerCountry;
 }
 
 jQuery(function ($) {
