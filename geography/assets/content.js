@@ -121,3 +121,15 @@ var nationalCorvetteMuseumString = '<div id="content">'+
 '</p>'+
 '</div>'+
 '</div>';
+
+
+var internationalPeaceGardenString = '<div id="content">'+
+'<div id="siteNotice">'+
+'<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
+'<h1 id="firstHeading" class="firstHeading">International Peace Garden</h1>'+
+'<div id="bodyContent">'+
+'<img class="imgStreet" width="1000" height="500" src="assets/images/international_peace_guarden.jpg">'+
+'<p align="left">sadasdasd'+
+'</p>'+
+'</div>'+
+'</div>';

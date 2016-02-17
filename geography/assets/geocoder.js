@@ -204,11 +204,9 @@ function centerMap(country) {
  * @param info - optional sidebar info.
  * @param icon - optional custom icon.
  */
-function geocodeAddress(addr, info, icon) {
+function geocodeAddress(addr, info, icon, bounce) {
 	geocoder.geocode( { 'address': addr }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-			map.setCenter(results[0].geometry.location);
-			
 			// set optimized to false to fix mobile glitch
 			var markerCountry = new google.maps.Marker({
 			   map: map,
@@ -220,16 +218,25 @@ function geocodeAddress(addr, info, icon) {
 				markerCountry.addListener('click', function() {
 					document.getElementById("mapinfo").innerHTML=info;
 					$(".sidebar.bottom").trigger("sidebar:open");
+					if (addr == "USA")
+					{
+						markerCountry.setAnimation(null);
+					}
 				});
 			}
 			
 			if (icon) {
 				markerCountry.setIcon(icon);
 			}
+			
+			if (bounce) {
+				markerCountry.setAnimation(google.maps.Animation.BOUNCE);
+			}
 		} else {
 		  alert("Geocode was not successful for the following reason: " + status);
 		}
 	});
+	return markerCountry;
 }
 
 jQuery(function ($) {
@@ -321,22 +328,30 @@ jQuery(function ($) {
 
 /**
  * Populate the map.
+ * Addresses are geocoded 5 at a time every 3 seconds.
  */
 function populateMap() {
+	// position the map
+	centerMap('USA');
+	
 	// geocode countries
-	geocodeAddress('USA', usaString, 'http://maps.google.com/mapfiles/arrow.png');
+	geocodeAddress('USA', usaString, 'http://maps.google.com/mapfiles/arrow.png', true);
 	geocodeAddress('Poland', polandString, 'http://maps.google.com/mapfiles/arrow.png');
 	
 	// geocode landmarks per state
 	geocodeAddress('Selma, AL 36703', edmundPettusBridgeString);
 	geocodeAddress('60 Gold St, Hartford, CT 06103', ancientBuryingGroundString);
 	geocodeAddress('Arizona 86052', grandCanyonString);
-	geocodeAddress('600 Museum Way, Bentonville, AR 72712', crystalBridgesString);
-	geocodeAddress('750 Hearst Castle Rd, San Simeon, CA 93452', hearstCastleString);
-	geocodeAddress('Canyon Rd, Lumpkin, GA 31815', providenceCanyonString);
-	geocodeAddress('Arches Scenic Dr, Moab, UT 84532', balancedRockString);
-	geocodeAddress('350 Corvette Dr, Bowling Green, KY 42101', nationalCorvetteMuseumString);
 	
-	// position the map
-	centerMap('USA');
+	setTimeout(function() {
+		geocodeAddress('600 Museum Way, Bentonville, AR 72712', crystalBridgesString);
+		geocodeAddress('750 Hearst Castle Rd, San Simeon, CA 93452', hearstCastleString);
+		geocodeAddress('Canyon Rd, Lumpkin, GA 31815', providenceCanyonString);
+		geocodeAddress('Arches Scenic Dr, Moab, UT 84532', balancedRockString);
+		geocodeAddress('350 Corvette Dr, Bowling Green, KY 42101', nationalCorvetteMuseumString);
+		
+		setTimeout(function() {
+			geocodeAddress('49 north west, Boissevain, MB R0K 0E0, Canada', internationalPeaceGardenString);
+		}, 3000) // 3 sec delay
+	}, 3000) // 3 sec delay
 }
