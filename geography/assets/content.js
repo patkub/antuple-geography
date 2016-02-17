@@ -122,14 +122,13 @@ var nationalCorvetteMuseumString = '<div id="content">'+
 '</div>'+
 '</div>';
 
-
 var internationalPeaceGardenString = '<div id="content">'+
 '<div id="siteNotice">'+
 '<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 '<h1 id="firstHeading" class="firstHeading">International Peace Garden</h1>'+
 '<div id="bodyContent">'+
 '<img class="imgStreet" width="1000" height="500" src="assets/images/international_peace_guarden.jpg">'+
-'<p align="left">sadasdasd'+
+'<p align="left">The International Peace Garden is situated on the border of North Dakota and Manitoba, Canada. The botanical garden spans 2,339 acres and includes a bell tower, a 9/11 memorial, and a big floral clock.'+
 '</p>'+
 '</div>'+
 '</div>';
