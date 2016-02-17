@@ -5,25 +5,22 @@
 	<meta charset="utf-8">
 	<title>Geography</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/sidebar/sidebar.css">
+	<link rel="stylesheet" href="assets/application.min.css">
 	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script src="assets/sidebar/jquery.sidebar.min.js"></script>
 	<script src="assets/geocoder.min.js"></script>
-	<style>
-	@media (max-width: 768px) {
-		.imgStreet {
-			max-width: 100%;
-		}
-	}
-	</style>
+	<script src="assets/content.min.js"></script>
+	<script src="assets/stateBorders.min.js"></script>
 </head>
 <body>	
 	<div id="map"></div>
 	<div class="sidebars">
 		<div id="mapinfo" class="sidebar bottom" style="overflow-y:auto;"></div>
 	</div>
+	<link rel="stylesheet" href="assets/sidebar/sidebar.min.css">
+	<link rel="stylesheet" href="https://bootswatch.com/simplex/bootstrap.min.css">
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&signed_in=true&callback=initMap"></script>
-	<script src="assets/content.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script>
 	$(document).ready(function () {
 		$(".sidebar.bottom").sidebar({side: "bottom"});
