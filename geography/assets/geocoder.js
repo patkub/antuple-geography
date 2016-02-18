@@ -1,6 +1,18 @@
+// map features
 var geocoder, map, layer;
+
+// states
 var stateBorders;
 var statePolygon = [];
+
+// locations
+var nextAddress, addresses, contentStrings;
+
+// initial delay in milliseconds between geocoding locations to prevent OVER_QUERY_LIMIT error
+var delay = 100;
+
+// number of countries to geocode
+const countryCount = 2;
 
 /**
 * Initialize the map.
@@ -204,9 +216,11 @@ function centerMap(country) {
  * @param info - optional sidebar info.
  * @param icon - optional custom icon.
  */
-function geocodeAddress(addr, info, icon, bounce) {
-	geocoder.geocode( { 'address': addr }, function(results, status) {
+function geocodeAddress(addr, next, info, icon, bounce) {
+	geocoder.geocode({ 'address': addr }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
+			nextAddress++;
+			
 			// set optimized to false to fix mobile glitch
 			var markerCountry = new google.maps.Marker({
 			   map: map,
@@ -232,8 +246,17 @@ function geocodeAddress(addr, info, icon, bounce) {
 			if (bounce) {
 				markerCountry.setAnimation(google.maps.Animation.BOUNCE);
 			}
+			
+			if (next) {
+				return next();
+			}
 		} else {
-		  alert("Geocode was not successful for the following reason: " + status);
+			if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+				// increase delay if we are sending request too fast
+				delay = delay * 1.5;
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			}
 		}
 	});
 }
@@ -327,30 +350,35 @@ jQuery(function ($) {
 
 /**
  * Populate the map.
- * Addresses are geocoded 5 at a time every 3 seconds.
  */
 function populateMap() {
 	// position the map
 	centerMap('USA');
 	
-	// geocode countries
-	geocodeAddress('USA', usaString, 'http://maps.google.com/mapfiles/arrow.png', true);
-	geocodeAddress('Poland', polandString, 'http://maps.google.com/mapfiles/arrow.png');
-	
-	// geocode landmarks per state
-	geocodeAddress('Selma, AL 36703', edmundPettusBridgeString);
-	geocodeAddress('60 Gold St, Hartford, CT 06103', ancientBuryingGroundString);
-	geocodeAddress('Arizona 86052', grandCanyonString);
-	
-	setTimeout(function() {
-		geocodeAddress('600 Museum Way, Bentonville, AR 72712', crystalBridgesString);
-		geocodeAddress('750 Hearst Castle Rd, San Simeon, CA 93452', hearstCastleString);
-		geocodeAddress('Canyon Rd, Lumpkin, GA 31815', providenceCanyonString);
-		geocodeAddress('Arches Scenic Dr, Moab, UT 84532', balancedRockString);
-		geocodeAddress('350 Corvette Dr, Bowling Green, KY 42101', nationalCorvetteMuseumString);
-		
-		setTimeout(function() {
-			geocodeAddress('49 north west, Boissevain, MB R0K 0E0, Canada', internationalPeaceGardenString);
-		}, 3000) // 3 sec delay
-	}, 3000) // 3 sec delay
+	// geocode locations
+	nextAddress = 0;
+	addresses = ['Selma, AL 36703',
+				'60 Gold St, Hartford, CT 06103',
+				'Arizona 86052',
+				'600 Museum Way, Bentonville, AR 72712',
+				'750 Hearst Castle Rd, San Simeon, CA 93452',
+				'Canyon Rd, Lumpkin, GA 31815',
+				'Arches Scenic Dr, Moab, UT 84532',
+				'350 Corvette Dr, Bowling Green, KY 42101',
+				'49 north west, Boissevain, MB R0K 0E0, Canada'];
+	contentStrings = [edmundPettusBridgeString, ancientBuryingGroundString, grandCanyonString, crystalBridgesString, hearstCastleString, providenceCanyonString, balancedRockString, nationalCorvetteMuseumString, internationalPeaceGardenString];
+	theNext();
+}
+
+function theNext() {
+	if (nextAddress < (addresses.length + countryCount)) {
+		if (nextAddress == 0) {
+			setTimeout(geocodeAddress('USA', theNext, usaString, "http://maps.google.com/mapfiles/arrow.png", true), delay);
+		} else if (nextAddress == 1) {
+			setTimeout(geocodeAddress('Poland', theNext, polandString, "http://maps.google.com/mapfiles/arrow.png", false), delay);
+		}
+		else {
+			setTimeout(geocodeAddress(addresses[nextAddress - countryCount], theNext, contentStrings[nextAddress - countryCount]), delay);
+		}
+	}
 }
