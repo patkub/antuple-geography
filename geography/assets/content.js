@@ -83,7 +83,7 @@ var hearstCastleString = '<div id="content">'+
 '<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 '<h1 id="firstHeading" class="firstHeading">Hearst Castle</h1>'+
 '<div id="bodyContent">'+
-'<iframe class="imgStreet" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=35.6853182,-121.169027&heading=75&pitch=15&fov=35"></iframe>'+
+'<iframe class="imgPano" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=35.6853182,-121.169027&heading=75&pitch=15&fov=35"></iframe>'+
 '<p align="left">The Hearst Castle is located on the Central Cost of California. Architect Julia Morgan designed the castle for William Randolph Hearst from 1919 to 1947. The castle has a wine cellar which protected Hearst\'s collection of alcohol during the prohibition era. There is also an airport which was built in the 1920s so that Hearst\'s famous guests could get to his estate faster than by train or car. There used to be the world\'s largest private zoo with zebras, aoudads, and Sambar deer. There are two pools at the castle: the Neptune Pool and the Roman Pool. Originally, the Neptune pool was supposed to be small and decorated with surrounding ornaments. However, on March 31, 1924, William Randolph Hearst wrote a letter to Julia Morgan and said that his wife and children want the pool to be as large as a swimming pool and to disregard the temple structure. The indoor Roman Pool has 205,000 gallons of water and a depth of 10 feet.'+
 '</p>'+
 '</div>'+
@@ -94,7 +94,7 @@ var providenceCanyonString = '<div id="content">'+
 '<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 '<h1 id="firstHeading" class="firstHeading">Providence Canyon</h1>'+
 '<div id="bodyContent">'+
-'<iframe class="imgStreet" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=32.0688,-84.9076958&heading=-120&pitch=15&fov=100"></iframe>'+
+'<iframe class="imgPano" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=32.0688,-84.9076958&heading=-120&pitch=15&fov=100"></iframe>'+
 '<p align="left">The Providence Canyon in Georgia is nicknamed the "little grand canyon." The canyon was formed by erosion of colorful soft soil due to poor farming in the 1800s. Formed during the Cretaceous Period, the sandstone bluffs are one of the oldest rock formations in Georgia. The canyon has the largest known wild colony of plumleaf azalea, rare flowers from southwestern Georgia and eastern Alabama, which bloom in mid to late summer.'+
 '</p>'+
 '</div>'+
@@ -105,7 +105,7 @@ var balancedRockString = '<div id="content">'+
 '<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 '<h1 id="firstHeading" class="firstHeading">Balanced Rock County</h1>'+
 '<div id="bodyContent">'+
-'<iframe class="imgStreet" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=38.7010115,-109.5652711&heading=100.56&pitch=15&fov=100"></iframe>'+
+'<iframe class="imgPano" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=38.7010115,-109.5652711&heading=100.56&pitch=15&fov=100"></iframe>'+
 '<p align="left">The mountain is approximately 128 feet (39 meters) tall. The balancing rock rises about 55 feet (16.75 meters) above the base of the mountain. The biggest rock is as big as three school buses.'+
 '</p>'+
 '</div>'+
@@ -116,7 +116,7 @@ var nationalCorvetteMuseumString = '<div id="content">'+
 '<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 '<h1 id="firstHeading" class="firstHeading">National Corvette Museum</h1>'+
 '<div id="bodyContent">'+
-'<iframe class="imgStreet" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=37.0044626,-86.3748681&heading=187&pitch=15&fov=100"></iframe>'+
+'<iframe class="imgPano" width="1000" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAxmMoaV9GrSom0cLblARIad6quTrkSSt0&location=37.0044626,-86.3748681&heading=187&pitch=15&fov=100"></iframe>'+
 '<p align="left">An indoor museum that tells the history of Corvette. Corvette models ranging from the 1950s to today are featured.'+
 '</p>'+
 '</div>'+
@@ -127,7 +127,7 @@ var internationalPeaceGardenString = '<div id="content">'+
 '<a onclick=$(".sidebar.bottom").trigger("sidebar:close");><i class="fa fa-times pull-right"></i></a></div>'+
 '<h1 id="firstHeading" class="firstHeading">International Peace Garden</h1>'+
 '<div id="bodyContent">'+
-'<img class="imgStreet" width="1000" height="500" src="assets/images/international_peace_guarden.jpg">'+
+'<img class="imgStreet" width="1000" src="assets/images/international_peace_guarden.jpg">'+
 '<p align="left">The International Peace Garden is situated on the border of North Dakota and Manitoba, Canada. The botanical garden spans 2,339 acres and includes a bell tower, a 9/11 memorial, and a big floral clock.'+
 '</p>'+
 '</div>'+

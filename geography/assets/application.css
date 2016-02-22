@@ -29,8 +29,16 @@ i {
 	margin-right: auto;
 }
 
+.imgStreet {
+	height: auto;
+}
+
 @media (max-width: 768px) {
 	.imgStreet {
+		max-width: 100%;
+	}
+	
+	.imgPano {
 		max-width: 100%;
 	}
 }
