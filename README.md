@@ -1,6 +1,8 @@
 Antuple Geography
 =================
 
-Visualize geography using the Google Maps Javascript API<br>
-http://www.antuple.net/geography<br>
+Visualize geography using the Google Maps Javascript API
+
+http://www.antuple.net/geography
+
 https://developers.google.com/maps/documentation/javascript/
